@@ -4,5 +4,18 @@ function startNewGame() {
     return;
   }
 
+  activePlayerNameElement.textContent = players[activePlayer].name;
   gameAreaElement.style.display = "block";
+}
+
+function switchPlayer() {
+  activePlayer = activePlayer === 0 ? 1 : 0;
+
+  activePlayerNameElement.textContent = players[activePlayer].name;
+}
+
+function selectGameField(event) {
+  event.target.textContent = players[activePlayer].symbol;
+  event.target.classList.add("disabled");
+  switchPlayer();
 }
